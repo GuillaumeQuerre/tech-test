@@ -5,9 +5,9 @@ import { ListCharacter } from './ListCharacter'
 function App() {
   return (
     <div className="App">
-      <h1>Select Rick and Morty characters by episode</h1>
+      <h1>Select Rick&Morty's characters by episode</h1>
       <SelectCharacter />
-      <ListCharacter />
+      {/* <ListCharacter /> */}
     </div>
   );
 }

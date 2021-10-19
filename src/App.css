@@ -19,3 +19,34 @@ h1 {
   padding: 10px;
 }
 /* List CSS */
+.characters {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  margin: 10px 5px;
+  padding: 10px;
+  border: 1px solid gray;
+}
+.cardcharacter {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  border: solid 1px black;
+  border-radius: 10px;
+  width: fit-content;
+  max-width: 80%;
+  margin: 10px auto;
+  padding:0;
+}
+.containerImage {
+  height: 200px;
+}
+.imagecharacter {
+  margin: auto;
+  max-width: 200px;
+  border-radius: 10px 10px 0 0;
+}
+.infocard {
+  display: flex;
+  flex-direction: column;
+}

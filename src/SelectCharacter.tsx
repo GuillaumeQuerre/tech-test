@@ -25,6 +25,7 @@ type Episode = {
     id: number;
     episode: string;
     name: string;
+    characters: Character[];
 }
 
 function SelectCharacter() {
@@ -32,32 +33,50 @@ function SelectCharacter() {
     const { loading, error, data } = useQuery(CHARACTERS_RICKMORTY, {
         variables: { page: page }
     });
-    const [character, setCharacter] = useState<Character | null>(null);
+    const [episode, setEpisode] = useState<Episode | null>(null);
     if (loading) return <p>Loading...</p>;
     if (error) return <p>Error : (</p>;
-    console.log(data);
-
+    console.log(episode)
     function selectEpisode(selectedEpisode: any) {
         let value = selectedEpisode;
         console.log(value);
-        setCharacter(data.episodes.results.find((x: Episode) => x.id === value));
+        setEpisode(data.episodes.results.find((x: Episode) => x.id === value));
         console.log(value);
     }
     return (
-        <div className="SelectCharac">
-            <select onChange={(event) => selectEpisode(event.currentTarget.value)}>
-                {data.episodes?.results?.map((episode: Episode, index: number) => {
-                    return (<option value={episode.id} key={index}>{episode.episode} - {episode.name}</option>)
+        <main>
+            <div className="SelectCharac">
+                <select onChange={(event) => selectEpisode(event.currentTarget.value)}>
+                    {data.episodes?.results?.map((episode: Episode, index: number) => {
+                        return (<option value={episode.id} key={index}>{episode.episode} - {episode.name}</option>)
+                    })
+                    }
+                </select>
+                <div className="pagination">
+                    <button disabled={!data.episodes.info.prev} onClick={() => setPage(data.episodes.info.prev)}>Previous</button>
+                    <p>Page n°{page}</p>
+                    <button disabled={!data.episodes.info.next} onClick={() => setPage(data.episodes.info.next)}>Next</button>
+                </div>
+            </div>
+
+            <ul className="row">
+                {/* listing des pays du continent -  1 li par pays*/}
+                {episode?.characters?.map((character: Character, index: number) => {
+                    return (<li className="col-12 col-sm-5 col-lg-3 cardcharacter" key={index}>
+                        <div className="containerImage">
+                            <img className="imagecharacter" src={character.image} />
+                        </div>
+                        <div className="infocard">
+                            <span>Identité: {character.name}</span>
+                            <span>Espèce: {character.species}</span>
+                        </div>
+                    </li>
+                    );
                 })
                 }
-            </select>
-            <div className="pagination">
-                <button disabled={!data.episodes.info.prev} onClick={() => setPage(data.episodes.info.prev)}>Previous</button>
-                <p>Page n°{page}</p>
-                <button disabled={!data.episodes.info.next} onClick={() => setPage(data.episodes.info.next)}>Next</button>
-            </div>
-        </div>
+            </ul>
+        </main>
 
     );
 }
-export { SelectCharacter }
+export { SelectCharacter };
