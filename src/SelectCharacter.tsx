@@ -54,27 +54,28 @@ function SelectCharacter() {
                 </select>
                 <div className="pagination">
                     <button disabled={!data.episodes.info.prev} onClick={() => setPage(data.episodes.info.prev)}>Previous</button>
-                    <p>Page n°{page}</p>
+                    <span>Page n°{page}</span>
                     <button disabled={!data.episodes.info.next} onClick={() => setPage(data.episodes.info.next)}>Next</button>
                 </div>
             </div>
-
-            <ul className="row">
-                {/* listing des pays du continent -  1 li par pays*/}
-                {episode?.characters?.map((character: Character, index: number) => {
-                    return (<li className="col-12 col-sm-5 col-lg-3 cardcharacter" key={index}>
-                        <div className="containerImage">
-                            <img className="imagecharacter" src={character.image} />
+            <div className="container">
+                <div className="row liste">
+                    {/* listing des pays du continent -  1 li par pays*/}
+                    {episode?.characters?.map((character: Character, index: number) => {
+                        return (<div className="col-12 col-sm-5 col-lg-3 cardcharacter" key={index}>
+                            <div className="containerImage">
+                                <img className="imagecharacter" src={character.image} />
+                            </div>
+                            <div className="infocard">
+                                <span>Identité: {character.name}</span>
+                                <span>Espèce: {character.species}</span>
+                            </div>
                         </div>
-                        <div className="infocard">
-                            <span>Identité: {character.name}</span>
-                            <span>Espèce: {character.species}</span>
-                        </div>
-                    </li>
-                    );
-                })
-                }
-            </ul>
+                        );
+                    })
+                    }
+                </div>
+            </div>
         </main>
 
     );
