@@ -16,6 +16,7 @@ query {
       count
     }
     results {
+        id
         name
         episode
         characters {
