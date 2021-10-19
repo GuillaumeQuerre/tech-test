@@ -10,6 +10,7 @@ function GetCharac() {
 }
 
 function SelectCharacter() {
+    GetCharac();
     return (
         <div className="SelectCharac">
             <select>

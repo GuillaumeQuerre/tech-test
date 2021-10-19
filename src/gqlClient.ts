@@ -11,19 +11,21 @@ const client = new ApolloClient({
 
 const CHARACTERS_RICKMORTY = gql`
 query {
-  characters(page: 2, filter: { name: "rick" }) {
+  episodes {
     info {
       count
     }
     results {
-      name
+        name
+        air_date
+        episode
+        characters {
+          image
+          name
+          species
+        }
+        created
     }
-  }
-  location(id: 1) {
-    id
-  }
-  episodesByIds(ids: [1, 2]) {
-    id
   }
 }
 `;

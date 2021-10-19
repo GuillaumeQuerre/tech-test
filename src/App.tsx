@@ -1,5 +1,3 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import { SelectCharacter } from './SelectCharacter'
 import { ListCharacter } from './ListCharacter'
@@ -7,6 +5,7 @@ import { ListCharacter } from './ListCharacter'
 function App() {
   return (
     <div className="App">
+      <h1>Select Rick and Morty characters by episode</h1>
       <SelectCharacter />
       <ListCharacter />
     </div>
