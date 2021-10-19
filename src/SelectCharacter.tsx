@@ -36,12 +36,9 @@ function SelectCharacter() {
     const [episode, setEpisode] = useState<Episode | null>(null);
     if (loading) return <p>Loading...</p>;
     if (error) return <p>Error : (</p>;
-    console.log(episode)
     function selectEpisode(selectedEpisode: any) {
         let value = selectedEpisode;
-        console.log(value);
         setEpisode(data.episodes.results.find((x: Episode) => x.id === value));
-        console.log(value);
     }
     return (
         <main>

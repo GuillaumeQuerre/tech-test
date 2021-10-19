@@ -1,4 +1,4 @@
-function ListCharacter() {
+function ListCharacter(props: any) {
 
     return (
         <div className="SelectCharac container">

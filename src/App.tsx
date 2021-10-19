@@ -7,7 +7,7 @@ function App() {
     <div className="App">
       <h1>Select Rick&Morty's characters by episode</h1>
       <SelectCharacter />
-      {/* <ListCharacter /> */}
+      {/* <ListCharacter/> */}
     </div>
   );
 }
