@@ -29,7 +29,9 @@ type Episode = {
 
 function SelectCharacter() {
     const [page, setPage] = useState(1);
-    const { loading, error, data } = useQuery(CHARACTERS_RICKMORTY);
+    const { loading, error, data } = useQuery(CHARACTERS_RICKMORTY, {
+        variables: { page: page }
+    });
     const [character, setCharacter] = useState<Character | null>(null);
     if (loading) return <p>Loading...</p>;
     if (error) return <p>Error : (</p>;
@@ -49,6 +51,11 @@ function SelectCharacter() {
                 })
                 }
             </select>
+            <div className="pagination">
+                <button disabled={!data.episodes.info.prev} onClick={() => setPage(data.episodes.info.prev)}>Previous</button>
+                <p>Page n°{page}</p>
+                <button disabled={!data.episodes.info.next} onClick={() => setPage(data.episodes.info.next)}>Next</button>
+            </div>
         </div>
 
     );

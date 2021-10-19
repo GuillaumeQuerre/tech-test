@@ -8,5 +8,14 @@ h1 {
 }
 
 /* Select CSS */
-
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin: 20px auto;
+  width: 30%;
+}
+.pagination button {
+  margin: auto;
+  padding: 10px;
+}
 /* List CSS */

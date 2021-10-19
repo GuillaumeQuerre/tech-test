@@ -10,10 +10,13 @@ const client = new ApolloClient({
 });
 
 const CHARACTERS_RICKMORTY = gql`
-query {
-  episodes {
+query EpisodesByPage($page: Int) {
+  episodes(page: $page) {
     info {
       count
+      pages
+      prev
+      next
     }
     results {
         id
