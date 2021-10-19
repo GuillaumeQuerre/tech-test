@@ -17,7 +17,6 @@ query {
     }
     results {
         name
-        air_date
         episode
         characters {
           image
@@ -25,6 +24,17 @@ query {
           species
         }
         created
+    }
+  }
+  characters {
+    info {
+      count
+    }
+    results {
+      id
+      name
+      species
+      image
     }
   }
 }
